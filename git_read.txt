@@ -1,0 +1,68 @@
+Git下载地址:https://git-scm.com/
+
+一.1.git bash:Unix与linux风格命令行,使用最多,推荐使用
+     git cmd:windows风格命令(在开始菜单git文件夹下)
+     git gui:图形界面的git,不建议初学者使用
+
+   2.新建文件夹建立本地仓库,进入该文件夹右击选择git bash打开
+     配置用户名和邮箱:
+      git config --global user.name "xxx"  
+      git config --global user.email xxx@lll.com 
+      --global 全局项.若不同项目使用不同的用户名和邮箱不加--global
+   3.查看配置:git config -l
+     查看系统配置:git config --system --list
+     查看当前用户配置:git config --global --list
+     查看用户:git config --global user.name
+              git config --global user.email
+              加上--global是全局,不加是当前库的用户名和邮箱
+   4.常用命令:
+     git init                   创建全新的仓库,在git管理的项目的根目录执行
+                                删除仓库只需要删除.git隐藏文件夹即可
+     git clone 链接地址         克隆一个项目和它的整个代码历史
+     git status [-s]            查看文件状态  [-s] 简介
+     git add 文件(夹)           跟踪文件或文件夹
+     git add .                  添加所有文件到暂存区  . 所有文件
+     git commit -m "信息"       提交暂存区中的内容到本地仓库
+     git commit -a -m  "信息"   直接提交到仓库,跳过暂存区
+     git checkout --  文件名    撤销修改,还原成git仓库中所保存的版本,修改会丢失无法恢复!
+     git reset HEAD  文件名     从暂存区移除对应的文件   . 所有文件
+     git diff 文件名            与库文件对比差异,改动了什么.(-红色:原来的,+绿色:改动后的)
+     git rm -f 文件名           从库和工作区全部删除
+     git rm --cached 文件名     只从库中移除,工作区保留
+     git log                    列出提交历史,最近的在最前
+     git log -2                 最近2条
+     git log -2 --pretty=oneline        在一行上展示一个历史
+     git log -2 --pretty=format:"%h|%an|%ar|%s"   自定义输出格式 哈希|作者|修改日期|说明
+     git reset --hard <CommitID>     根据指定的ID回退到指定的版本
+     git reflog --pretty=oneline     在任何版本下查看所有的历史记录
+   5.ssh key
+     id_rsa(私钥,存放在客户端电脑中即可)
+     id_rsa.pub(公钥文件,需要配置到github中)
+     生成ssh key:
+	ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+        连续敲击3次回车,即可在C:\users\用户文件夹\.ssh目录中生成 id_rsa 和id_rsa.pub两个文件
+        复制公钥中的内容,添加到githtb中的settings 下的ssh and GpG keys中进行粘贴
+        检测 ssh是否配置成功:
+        ssh -T git@github.com  会提示成功
+     github库和本地库关联: git remote add origin github上的库地址  (运行一次,以后不用运行此行内容) 
+     上传本地库到github: git push -u origin master
+     git clone 链接地址 克隆一个项目和它的整个代码历史
+     git pull [链接地址]   更新远程仓库文件到本地
+   6.git分支
+     git branch 分支名      新建一个分支,但依然停留在当前分支
+     git branch             列出本地所有分支
+     git branch -d 分支名   删除分支
+     git branch -r          列出所有远程分支
+     git checkout 分支名    切换到另一分支
+     git checkout -b 分支名 新建一个分支,并切换到该分支
+     git merge 分支名       合并某分支到当前分支
+     #删除远程分支:
+         git push origin  --delete 分支名
+         git branch -dr 分支名
+ 
+     
+
+     
+
+  
+  
